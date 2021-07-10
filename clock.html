@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clock</title>
+    <style>
+        html{
+            text-align: center;
+            font-size: 10px;
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .clock {
+            margin: 0 auto;
+            padding: 2rem;
+            width: 30rem;
+            height: 30rem;
+
+            border: 3px solid black;
+            border-radius: 50%;
+        }
+
+        .clock-face {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hand {
+            height: 3px;
+            width: 50%;
+            background: black;
+
+            position: absolute;
+            top: 50%;
+
+            transform-origin: right;
+            transform: rotate(90deg);
+
+            transition: all .02s;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand second"></div>
+            <div class="hand min"></div>
+            <div class="hand hour"></div>
+        </div>
+    </div>
+    <script>
+        function getTime() {
+            let date = new Date();
+            
+            let secondHand = document.body.querySelector('.hand.second');
+            let secondAmout = date.getSeconds();
+            secondHand.style.transform = `rotate(${((secondAmout / 60) * 360) + 90}deg)`;
+        }
+        setInterval(getTime, 1000);
+    </script>
 </body>
+
 </html>

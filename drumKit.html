@@ -12,16 +12,12 @@
             background: linear-gradient(rgba(123, 23, 43, 0.5) 50%, rgba(123, 221, 90, 0.5));
         }
 
-        .wrapper {
+        .keys {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100vw;
             height: 100vh;
-        }
-
-        .keys {
-            display: flex;
         }
 
         .key {
@@ -42,12 +38,19 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="keys">
+    <div class="keys">
             <div class="key" data-key='65'>KeyA</div>
             <div class="key" data-key='83'>KeyS</div>
             <div class="key" data-key='68'>KeyD</div>
-        </div>
+            <div class="key" data-key='65'>KeyA</div>
+            <div class="key" data-key='83'>KeyS</div>
+            <div class="key" data-key='68'>KeyD</div>
+            <div class="key" data-key='65'>KeyA</div>
+            <div class="key" data-key='83'>KeyS</div>
+            <div class="key" data-key='68'>KeyD</div>
+            <div class="key" data-key='65'>KeyA</div>
+            <div class="key" data-key='83'>KeyS</div>
+            <div class="key" data-key='68'>KeyD</div>
     </div>
     <script>
         function keyDown(e) {
@@ -63,6 +66,11 @@
         let keys = document.body.querySelectorAll('div .key');
         document.addEventListener('keydown', keyDown)
         keys.forEach(key => key.addEventListener('transitionend', removeKey))
+
+        // !Как сделать чтобы размеры элементов адаптировались для определенного количества элементов
+        // let keysAmount = document.body.querySelector('.keys').childElementCount;
+        
+        // keys.forEach(key => key.style.width = document.offsetWidth / keysAmount);
     </script>
 </body>
 
