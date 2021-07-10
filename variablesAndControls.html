@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controls</title>
+    <style>
+
+        :root{
+            --spasing: 10px; 
+            --bgcolor: #BADA55;
+            --blur: 10px;
+
+            font-size: 10px;
+            text-align: center;
+        }
+
+        body{
+            min-height: 100vh;
+            font-size: 1.6rem;
+
+            background: linear-gradient(rgba(12, 212, 211, 0.5) 50%, rgba(12, 212, 12, 0.5));
+        }
+
+        .title{
+            font-size: 5rem;
+        }
+
+        .title .hl{
+            color: var(--bgcolor);
+        }
+
+        label{
+            font-size: 2rem;
+        }
+
+        img{
+            background: var(--bgcolor);
+            margin: 2rem;
+            padding: var(--spasing);
+            filter: blur(var(--blur));
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Variables and controls by <span class='hl'>JS!</span></div>
+    <div class="controls">
+        <label for="padding">Padding:
+        <input id='padding' name='spasing' type="range" value='10' min='0' max='100' data-sizing='px'/>
+    </label>
+
+        <label for="blur">Blur:</label>
+        <input id='blur' name='blur' type="range" value='10' min='0' max='200' data-sizing='px'/>
+
+        <label for="color">Color:</label>
+        <input id='color' name='bgcolor' type="color" value='#BADA55'>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1625777719130-0a8e07086117?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+
+    <script>
+        function updateVariables() {
+            let sizing = this.dataset.sizing || '';
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + sizing);
+        }
+
+        let inputs = document.body.querySelectorAll('.controls input');
+        inputs.forEach(input => input.addEventListener("change", updateVariables));
+        inputs.forEach(input => input.addEventListener("mousemove", updateVariables));
+    </script>
+</body>
+</html>
