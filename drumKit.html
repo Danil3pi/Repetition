@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Drum kit</title>
     <style>
         html{
             font-size: 16px;
+            background: linear-gradient(rgba(123, 23, 43, 0.5) 50%, rgba(123, 221, 90, 0.5));
         }
 
         .wrapper {
@@ -26,14 +27,16 @@
         .key {
             border: 3px solid black;
             border-radius: 5px;
-            padding: 1.5rem 1rem; 
+            padding: 1rem .5rem; 
             margin: 1rem;
             transition: all .07s;
+            color: white;
+            font-size: 1.5rem;
         }
 
         .downing {
-            border-color: gold;
-            transform: scale(1.1)
+            border-color: #ffc600;
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -53,13 +56,13 @@
             key.classList.add('downing')
         }
 
-        function updateKey(e) {
+        function removeKey(e) {
             if (e.propertyName !== 'transform') return;
             this.classList.remove('downing');
         }
         let keys = document.body.querySelectorAll('div .key');
         document.addEventListener('keydown', keyDown)
-        keys.forEach(key => key.addEventListener('transitionend', updateKey))
+        keys.forEach(key => key.addEventListener('transitionend', removeKey))
     </script>
 </body>
 
