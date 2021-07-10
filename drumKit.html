@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .keys{
+            display: flex;
+        }
+
+        .key{
+            border: 3px solid black;
+            border-radius: 5px;
+            padding: 2em;
+            margin: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="keys">
+            <div class="key" data-key='65'>KeyA</div>
+            <div class="key" data-key='83'>KeyS</div>
+            <div class="key" data-key='68'>KeyD</div>
+        </div>
+    </div>
+    <script>
+        // let keys = document.body.querySelectorAll('div .key');
+        document.addEventListener('keydown', function(e) {
+            let key = document.body.querySelector(`div[data-key="${e.keyCode}"]`);
+            if (!key) return; // If there is not key
+            console.dir(key);
+        })
+    </script>
+</body>
+</html>
