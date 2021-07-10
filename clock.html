@@ -18,6 +18,12 @@
             min-height: 100vh;
         }
 
+        /* Если записать matgin and padding в clock-face
+        то получиться что padding будет действовать на стелки внутри себя.
+        А записав padding в clock, мы отодвигаем clock-face от clock
+        и визуально кажется что стрелки не доходят до краев часов.
+        Да и сам контейнер clock играет роль окантовки часов.
+        */
         .clock {
             margin: 0 auto;
             padding: 2rem;
