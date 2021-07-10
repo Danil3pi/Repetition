@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .wrapper{
+        html{
+            font-size: 16px;
+        }
+
+        .wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -14,18 +19,25 @@
             height: 100vh;
         }
 
-        .keys{
+        .keys {
             display: flex;
         }
 
-        .key{
+        .key {
             border: 3px solid black;
             border-radius: 5px;
-            padding: 2em;
-            margin: 1em;
+            padding: 1.5rem 1rem; 
+            margin: 1rem;
+            transition: all .07s;
+        }
+
+        .downing {
+            border-color: gold;
+            transform: scale(1.1)
         }
     </style>
 </head>
+
 <body>
     <div class="wrapper">
         <div class="keys">
@@ -35,12 +47,20 @@
         </div>
     </div>
     <script>
-        // let keys = document.body.querySelectorAll('div .key');
-        document.addEventListener('keydown', function(e) {
+        function keyDown(e) {
             let key = document.body.querySelector(`div[data-key="${e.keyCode}"]`);
             if (!key) return; // If there is not key
-            console.dir(key);
-        })
+            key.classList.add('downing')
+        }
+
+        function updateKey(e) {
+            if (e.propertyName !== 'transform') return;
+            this.classList.remove('downing');
+        }
+        let keys = document.body.querySelectorAll('div .key');
+        document.addEventListener('keydown', keyDown)
+        keys.forEach(key => key.addEventListener('transitionend', updateKey))
     </script>
 </body>
+
 </html>
